@@ -103,11 +103,15 @@
         align-items: center; /* centra los elementos hijos horizontalmente */
     }
 
-    figure {
-        width: 100%;
-        text-align: center; /* centra el contenido del figure */
-        margin-right: 0; /* elimina el margen derecho */
-    }
+   figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centra el contenido del figure */
+}
+
+       header * {
+    margin: 0; /* elimina todos los márgenes en el encabezado */
+}
 
     #camisas img {
         max-width: 100%;

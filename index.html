@@ -93,23 +93,26 @@
             cursor: pointer;
         }
 
-      @media (max-width: 600px) {
-        body {
-            font-size: 18px;
-        }
-
-        .gallery {
-            flex-direction: column;
-        }
-
-        figure {
-            width: 100%;
-        }
-
-        #camisas img {
-            max-width: 100%;
-        }
+     @media (max-width: 600px) {
+    body {
+        font-size: 18px;
     }
+
+    .gallery {
+        flex-direction: column;
+        align-items: center; /* centra los elementos hijos horizontalmente */
+    }
+
+    figure {
+        width: 100%;
+        text-align: center; /* centra el contenido del figure */
+    }
+
+    #camisas img {
+        max-width: 100%;
+    }
+}
+
 
     </style>
 </head>

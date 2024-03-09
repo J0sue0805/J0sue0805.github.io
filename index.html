@@ -93,7 +93,7 @@
             cursor: pointer;
         }
 
-        @media (max-width: 600px) {
+       @media (max-width: 600px) {
     body {
         font-size: 18px;
     }
@@ -106,10 +106,18 @@
         width: 100%;
     }
 
+    #camisas {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+    }
+
     #camisas img {
         max-width: 100%;
     }
 }
+
 
 h1, p, figcaption {
     text-align: center;
@@ -119,20 +127,23 @@ figure {
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    width: 50%; /* o cualquier otro valor que prefieras */
+    width: 300px; /* mantener el ancho original */
 }
 
 .gallery, #camisas {
     display: flex;
-    flex-direction: column;
-    align-items: center; /* centra los elementos hijos horizontalmente */
-    justify-content: center; /* centra los elementos hijos verticalmente */
+    flex-wrap: wrap; /* esto permite que las imágenes de las camisas se envuelvan a la siguiente línea si no hay suficiente espacio */
+    justify-content: center; /* esto centra las imágenes de las camisas horizontalmente */
 }
 
 figure img {
     margin: auto;
+    max-width: 100%;
+    max-height: 100px;
+    height: auto;
+    width: auto;
+    object-fit: cover;
 }
-
 
     </style>
 </head>

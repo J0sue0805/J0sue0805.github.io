@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Camisas de Fútbol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #228B22;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            background-color: #228B22;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        figure {
+            display: inline-block;
+            text-align: center;
+            margin-right: 20px;
+            width: 300px;
+        }
+
+        figure img {
+            max-width: 100%;
+            max-height: 100px;
+            height: auto;
+            width: auto;
+            object-fit: cover;
+        }
+
+
+        figcaption {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+
+
+        #gallery img,
+        #camisas img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        #camisas {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            /* Añade un margen en la parte superior */
+        }
+
+        #back-button {
+            display: none;
+            margin: 20px;
+            padding: 10px;
+            background-color: #228B22;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Nuestras Chemis Retro</h1>
+    </header>
+
+    <main>
+        <section class="gallery" id="gallery">
+            <!-- La galería se llenará dinámicamente con JavaScript -->
+        </section>
+        <div id="camisas"></div>
+        <button id="back-button">Volver</button>
+    </main>
+
+    <footer>
+        <p>Instagram: pasionfut_sv</p>
+    </footer>
+
+    <script>
+        // Tus datos de ejemplo para los equipos y sus imágenes
+
+        const equipos = [
+            {
+                nombre: 'Barcelona',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona3.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona4.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona5.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona6.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona7.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona8.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona9.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona10.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona11.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona12.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona13.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona14.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona15.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona16.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona17.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/barcelona18.jpg']
+            },
+            {
+                nombre: 'Real Madrid',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/real madrid.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid3.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid4.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid5.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid6.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid7.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid8.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid9.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid10.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid11.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid12.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid13.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid14.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/madrid15.jpg']
+            },
+            {
+                nombre: 'Atletico de Madrid',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/atletico.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/atletico1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/atletico2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/atletico3.jpg']
+            },
+            {
+                nombre: 'Manchester United',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu3.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu4.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu5.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu6.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu7.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu8.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu9.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu10.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu11.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu12.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu13.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu14.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu15.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu16.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu17.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu18.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/manu19.jpg']
+            },
+            {
+                nombre: 'Liverpool',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liverpool.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver3.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver4.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver5.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver6.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver7.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver8.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver9.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver10.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver11.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver12.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver13.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/liver14.jpg']
+            },
+            {
+                nombre: 'Manchester City',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/city.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/city1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/city2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/city3.jpg']
+            },
+            {
+                nombre: 'Arsenal',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arsenal.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arsenal1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arsenal2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arsenal3.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arsenal4.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arsenal5.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arsenal6.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arsenal7.jpg']
+            },
+            {
+                nombre: 'AC Milán',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan3.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan4.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan5.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan6.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan7.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan8.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan9.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan10.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan11.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan12.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/milan13.jpg']
+            },
+            {
+                nombre: 'Inter de Milán',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/inter milan.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/inter1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/inter2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/inter3.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/inter4.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/inter5.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/inter6.jpg']
+            },
+            {
+                nombre: 'Juventus',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/juventus.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/juventus1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/juventus2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/juventus3.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/juventus4.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/juventus5.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/juventus6.jpg']
+            },
+            {
+                nombre: 'Boca Juniors',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/boca.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/boca1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/boca3.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/boca2.jpg']
+            },
+            {
+                nombre: 'Argentina',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/argentina.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arg1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arg2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arg3.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/arg4.jpg']
+            },
+            {
+                nombre: 'Brasil',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/brasil-removebg-preview.png',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/brasil1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/brasil2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/brasil3.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/brasil4.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/brasil5.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/brasil6.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/brasil7.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/brasil8.jpg']
+            },
+            {
+                nombre: 'Alemania',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/alemania.jpg',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/ale1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/ale2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/ale3.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/ale4.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/ale5.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/ale6.jpg']
+            },
+            {
+                nombre: 'Francia',
+                imagen: 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/francia-removebg-preview.png',
+                camisas: ['file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/francia1.jpg', 'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/francia2.jpg',
+                    'file:///C:/Users/josue/OneDrive/Desktop/Paginas-Chemis/imagenes/francia3.jpg']
+            }
+        ];
+
+        // Obtener el contenedor de la galería
+        const galleryContainer = document.getElementById('gallery');
+        const camisasDiv = document.getElementById('camisas');
+        const backButton = document.getElementById('back-button');
+
+        // Generar dinámicamente los elementos figure para cada equipo
+        equipos.forEach(equipo => {
+            const figure = document.createElement('figure');
+            const img = document.createElement('img');
+            const figcaption = document.createElement('figcaption');
+
+            img.src = equipo.imagen;
+            img.alt = equipo.nombre;
+            figcaption.textContent = equipo.nombre;
+
+            // Agrega un evento de clic a la figura
+            figure.addEventListener('click', () => {
+                // Aquí es donde mostrarías las camisas del equipo.
+                camisasDiv.innerHTML = ''; // Limpia el div
+                equipo.camisas.forEach(camisa => {
+                    const camisaImg = document.createElement('img');
+                    camisaImg.src = camisa;
+                    camisasDiv.appendChild(camisaImg);
+                });
+
+                // Oculta la galería y muestra el botón de volver
+                galleryContainer.style.display = 'none';
+                backButton.style.display = 'block';
+            });
+
+            figure.appendChild(img);
+            figure.appendChild(figcaption);
+            galleryContainer.appendChild(figure);
+        });
+
+        // Agrega un evento de clic al botón de volver
+        backButton.addEventListener('click', () => {
+            // Muestra la galería y oculta las camisas y el botón de volver
+            galleryContainer.style.display = 'flex';
+            camisasDiv.innerHTML = '';
+            backButton.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>

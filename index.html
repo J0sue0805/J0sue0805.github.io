@@ -93,8 +93,7 @@
             cursor: pointer;
         }
 
-        /* Estilos para pantallas pequeñas (teléfonos) */
-@media (max-width: 600px) {
+        @media (max-width: 600px) {
     body {
         font-size: 18px;
     }
@@ -111,6 +110,29 @@
         max-width: 100%;
     }
 }
+
+h1, p, figcaption {
+    text-align: center;
+}
+
+figure {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%; /* o cualquier otro valor que prefieras */
+}
+
+.gallery, #camisas {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* centra los elementos hijos horizontalmente */
+    justify-content: center; /* centra los elementos hijos verticalmente */
+}
+
+figure img {
+    margin: auto;
+}
+
 
     </style>
 </head>
